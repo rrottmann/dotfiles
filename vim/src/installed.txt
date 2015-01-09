@@ -1,0 +1,9 @@
+Color Schemes:
+desert256
+
+Plugins:
+perl-support
+pydoc
+
+ctags:
+python.ctags
