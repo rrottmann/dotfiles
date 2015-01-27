@@ -10,14 +10,16 @@ if ! [ -f /etc/redhat-release ]; then
     echo "Error: This script needs to be run on a Red Hat based distro. Exiting."
     exit 1
 fi
-yum install -y git vim ctags screen
+y=yum
+which dnf >/dev/null && y=dnf
+$y install -y git vim ctags screen perl perl-encoding
 if ! getent passwd $u; then
     useradd -m $u
     echo -n "$pw" | passwd --stdin $u
     echo "Your new password is: $pw"
     usermod -G wheel $u
 fi
-grep -q "^%wheel  ALL=(ALL)       ALL" /etc/sudoers || echo "%wheel  ALL=(ALL)       ALL" >> /etc/sudoers
+grep -q "^%wheel  ALL = (ALL) NOPASSWD: ALL" /etc/sudoers || echo "%wheel  ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
 sudo su - $u -c "[ -d ~/git ] || mkdir ~/git"
 sudo su - $u -c "cd ~/git && git clone https://github.com/rrottmann/dotfiles.git"
 sudo su - $u -c "cd ~/git/dotfiles && sh ./link.sh | sh -x"
