@@ -23,4 +23,4 @@ grep -q "^%wheel  ALL = (ALL) NOPASSWD: ALL" /etc/sudoers || echo "%wheel  ALL =
 sudo su - $u -c "[ -d ~/git ] || mkdir ~/git"
 sudo su - $u -c "cd ~/git && git clone https://github.com/rrottmann/dotfiles.git"
 sudo su - $u -c "cd ~/git/dotfiles && sh ./link.sh | sh -x"
-[ -f /home/$u/.ssh/id_rsa ] || sudo su - $u -c "ssh-keygen -t rsa -f /home/$u/.ssh/id_rsa -N ''"
+[ -f /home/$u/.ssh/id_rsa ] || sudo su - $u -c "ssh-keygen -t rsa -f /home/$u/.ssh/id_rsa -N ''" && cat /home/$u/.ssh/id.rsa.pub
