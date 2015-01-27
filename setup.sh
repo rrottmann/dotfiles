@@ -13,7 +13,7 @@ fi
 y=yum
 which dnf >/dev/null && y=dnf
 $y install -y git vim ctags screen perl perl-encoding
-$y install -y lynx rpm-build mod_php php-mysql httpd dos2unix policycoreutils-python mock
+$y install -y lynx rpm-build mod_php php-mysql httpd dos2unix policycoreutils-python mock rpmlint wget
 if ! getent passwd $u; then
     useradd -m $u
     echo -n "$pw" | passwd --stdin $u
