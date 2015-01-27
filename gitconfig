@@ -1,3 +1,5 @@
 [user]
     email = reiner@rottmann.it
     name = Reiner Rottmann
+[push]
+	default = simple
